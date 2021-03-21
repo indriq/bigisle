@@ -1,0 +1,81 @@
+{
+    "publisher": "bigisle",
+    "name": "bigisle",
+    "displayName": "BigIsle",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.54.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:bigisle.helloWorld",
+        "onCommand:bigisle.createFile"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "bigisle.helloWorld",
+                "title": "Hello World"
+            },
+            {
+                "command": "bigisle.createFile",
+                "title": "bigisle: Create File"
+            }
+        ],
+        "configuration": {
+            "title": "BigIsle",
+            "properties": {
+                "bigisle.createFile.extensions": {
+                    "type": "array",
+                    "default": [
+                        ".scss"
+                    ],
+                    "description": "Array of extensions like ['.scss']."
+                }
+            }
+        },
+        "menus": {
+            "explorer/context": [
+                {
+                    "title": "Create File",
+                    "command": "bigisle.createFile",
+                    "group": "bigisle"
+                }
+            ],
+            "editor/context": [
+                {
+                    "title": "Create File",
+                    "command": "bigisle.createFile",
+                    "group": "bigisle"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js",
+        "format": "prettier -w src"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.54.0",
+        "@typescript-eslint/eslint-plugin": "^4.14.1",
+        "@typescript-eslint/parser": "^4.14.1",
+        "eslint": "^7.19.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.3",
+        "vscode-test": "^1.5.0"
+    }
+}
